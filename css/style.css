@@ -1,0 +1,81 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.header{
+  width: 100%;
+  height: 6rem;
+  background-color: rgb(236, 77, 77);
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.logoBox{
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+#logosvg{
+  width: 100px;
+  height: 100px;
+  fill: rgb(255, 255, 255);
+
+}
+.title{
+  color: #fff;
+  text-align: center;
+}
+.buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: -25%;
+  margin-left: 10%;  
+  gap: 20px;
+}
+.navBtn{
+  background-color: rgb(250, 250, 250);
+  font-size:.8em;
+  padding: 5px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+
+}
+.navBtn:hover{
+  background-color: rgba(245, 15, 15, 0.644);
+  padding: 5px;
+  border-radius: 7px;
+  cursor: pointer;
+  color: #fff;
+  width: 100%;
+  font-weight: 700;
+  border: 2px solid #fff;
+  transition-duration: 500ms;
+}
+
+section{
+  margin-top: 5%;
+}
+
+.tabela{
+  margin: auto;
+  width: 90%;
+  color: #000000;
+  border: 2px solid #f30d0d;
+  border-collapse: collapse;
+  border-radius: 5px;
+  
+  
+}
+ td, th{
+  border: 1px solid #000;
+  padding: 10px;
+  text-align: center;
+  
+}
