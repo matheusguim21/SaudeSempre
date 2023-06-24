@@ -1,0 +1,40 @@
+{{>partials/header}}
+<div class="buttons">
+      <a href="home"><button class="navBtn" type="button">Página Inicial</button></a>
+      
+      <a href="pacientes"><button class="navBtn" type="button">Gerenciar Pacientes</button></a>
+    
+    </div>
+  </div>
+  <section>
+    <div class="main">
+    
+      <table class="tabela">
+        <tr>
+          <th>Id</th>
+          <th>N° Atendimento</th>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Data de Nascimento</th>
+          <th>Telefone</th>
+          <th>Plano de Saúde</th>
+          <th>Endereço</th>
+        </tr>
+        {{#paciente}}
+        <tr>
+          <td>{{id}}</td>
+          <td>{{idAtendimento}}</td>
+          <td>{{name}}</td>
+          <td>{{cpf}}</td>
+          <td>{{dataNascimento}}</td>
+          <td>{{telefone}}</td>
+          <td>{{planoDeSaude}}</td>
+          <td>{{endereco}}</td>
+        </tr>
+        {{/paciente}}
+      </table>
+    </div>
+  </section>
+
+</body>
+</html>

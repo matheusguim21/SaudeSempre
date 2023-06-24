@@ -1,0 +1,30 @@
+{{>partials/header}}
+<div class="buttons">
+      <a href="home"><button class="navBtn" type="button">Página Inicial</button></a>
+      
+      <a href="pacientes"><button class="navBtn" type="button">Gerenciar Pacientes</button></a>
+    
+    </div>
+  </div>
+  <section>
+    <div class="main">
+    {{#showWelcome}}
+    <h1>Olá {{name}}, verifiquei aqui e você tem {{age}} anos. {{#older}} Você é maior de idade{{/older}}</h1>
+    {{/showWelcome}}
+      <table class="tabela">
+        <tr>
+          <th>Nome Pacientes</th>
+          <th>Data de Nascimento</th>
+          <th>Data da Consulta</th>
+          <th>Tipo de Consulta</th>
+          <th>Médico</th>
+        </tr>
+        <tr>
+          <td>{{name}}</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+</body>
+</html>

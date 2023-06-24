@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario da aula</title>
+</head>
+<body>
+  
+  <form method="POST" action="/formulario-resultado">
+    <input type="text" name='nome' placeholder="Digite seu nome">
+    <input type="text" name='ano' placeholder="Digite seu ano de nascimento">
+    <input type="submit" value="Enviar">
+
+  </form>
+    {{#mostrarIdade}}
+
+      <input type="text" name="idade" disabled value="Você tem {{idade}} anos">
+     {{/mostrarIdade}}
+
+</body>
+</html>
