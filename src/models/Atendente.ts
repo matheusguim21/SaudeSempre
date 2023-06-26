@@ -13,7 +13,7 @@ export interface AtendenteInstance extends Model{
 }
 
 export const Atendente  = sequelize.define<AtendenteInstance>("Atendente", {
-  id:{
+  idAtendente:{
     primaryKey:true,
     type: DataTypes.INTEGER,
     autoIncrement:true,
@@ -24,12 +24,12 @@ export const Atendente  = sequelize.define<AtendenteInstance>("Atendente", {
     allowNull:false,
 
   },
-  CPF:{
+  cpf:{
     type:DataTypes.CHAR(11),
     unique:true,
     allowNull:false,
   },
-  consultorioId:{
+  Consultorio_idConsultorio:{
   type:DataTypes.INTEGER,
   references:{
     model:'Endereco',
@@ -37,10 +37,23 @@ export const Atendente  = sequelize.define<AtendenteInstance>("Atendente", {
 
   }
    
+  },
+  usuario:{
+    type:DataTypes.STRING,
+    allowNull:false,
+    unique:true
+  },
+  senha:{
+    type:DataTypes.STRING,
+    allowNull:false
   }
+},
+{tableName:'Atendente', timestamps:false
+});
+
   
   
-})
+
 
 Atendente.belongsTo(Endereco,{foreignKey:'consultorioId'})
 Consultorio.hasMany(Atendente, { foreignKey: 'consultorioId' });

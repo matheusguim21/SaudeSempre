@@ -3,38 +3,51 @@
       <a href="consulta"><button class="navBtn" type="button">Agendar Consulta</button></a>
       
       <a href="pacientes"><button class="navBtn" type="button">Gerenciar Pacientes</button></a>
+      <a href="consultorio"><button class="navBtn" type="button">Gerenciar Consultórios</button></a>
     
     </div>
   </div>
   <section>
     <div class="main">
-    
+
+      <form action="POST" class="formConsultorio">
+        <input type="text" name="nomeconsultorio"placeholder="Digite o nome do consultório">
+        <input type="submit" value="Cadastrar">
+      
+      </form>
       <table class="tabela">
         <tr>
-          <th>Id</th>
-          <th>N° Atendimento</th>
-          <th>Nome</th>
-          <th>CPF</th>
-          <th>Data de Nascimento</th>
-          <th>Telefone</th>
+          <th>Id Consulta</th>
+          <th>Data</th>
+          <th>Hora</th>
+          <th>Tipo</th>
+          <th>Status</th>
+          <th>Id Pacientes</th>
           <th>Plano de Saúde</th>
-          <th>Endereço</th>
+          <th>Id Atendente</th>
+          <th>Consultório Atendente</th>
+          <th>Médico</th>
+          <th>Consultório do Médico</th>
         </tr>
-        {{#paciente}}
+        {{#consultas}}
         <tr>
-          <td>{{id}}</td>
-          <td>{{idAtendimento}}</td>
-          <td>{{name}}</td>
-          <td>{{cpf}}</td>
-          <td>{{dataNascimento}}</td>
-          <td>{{telefone}}</td>
-          <td>{{planoDeSaude}}</td>
-          <td>{{endereco}}</td>
+          <td>{{idConsulta}}</td>
+          <td>{{data}}</td>
+          <td>{{hora}}</td>
+          <td>{{tipo}}</td>
+          <td>{{status}}</td>
+          <td>{{Paciente_idPaciente}}</td>
+          <td>{{Paciente_PlanoSaude_idPlanoSaude}}</td>
+          <td>{{Paciente_Endereco_idEndereco}}</td>
+          <td>{{Atendente_idAtendente}}</td>
+          <td>{{Atendente_Consultorio_idConsultorio}}</td>
+          <td>{{Medico_idMedico}}</td>
         </tr>
-        {{/paciente}}
+        {{/consultas}}
       </table>
     </div>
   </section>
 
 </body>
 </html>
+    

@@ -18,7 +18,7 @@ export interface ConsultaInstance extends Model{
 
 export const Consulta = sequelize.define<ConsultaInstance>("Consulta",{
 
-  id:{
+  idConsulta:{
     type:DataTypes.INTEGER,
     allowNull:false,
     primaryKey:true,
@@ -28,6 +28,11 @@ export const Consulta = sequelize.define<ConsultaInstance>("Consulta",{
     type:DataTypes.DATE,
     allowNull:false
   },
+  hora:{
+    type:DataTypes.TIME,
+    allowNull:false
+
+  },
   tipo:{
     type:DataTypes.STRING,
     allowNull:false
@@ -36,49 +41,72 @@ export const Consulta = sequelize.define<ConsultaInstance>("Consulta",{
     type:DataTypes.STRING,
     allowNull:false
   },
-  planoSaudeId:{
+  Paciente_idPaciente:{
     type:DataTypes.INTEGER,
     references:{
-      model:'PlanoSaude',
+      model:'idPaciente',
       key:'id'
     }
   },
-  pacienteId:{
-    type:DataTypes.INTEGER
-  },
-  pacienteplanoId:{
+  
+  Paciente_PlanoSaude_idPlanoSaude:{
     type:DataTypes.INTEGER,
     references:{
       model:'PacientePlano',
-      key:'id'
+      key:'PlanoSaude_idPlanoSaude'
     }
   },
-  atendenteId:{
+  Paciente_Endereco_idEndereco:{
+    type:DataTypes.INTEGER,
+    references:{
+      model:'Paciente',
+      key:'Endereco_idEndereco'
+    }
+  },
+
+  Atendente_idAtendente:{
     type:DataTypes.INTEGER,
     references:{
       model:'Atendente',
-      key:'id'
-    }
+      key:'idAtendente'
+      }
   },
-  atendenteConsultorioId:{
+  Atendente_Consultorio_idConsultorio:{
     type:DataTypes.INTEGER,
     references:{
-      model:'Consultorio',
-      key:'id'
-    }
-  },
-  medicoId:{
+      model:'Atendente',
+      key:'Consultorio_idConsultorio'
+      }
+  }
+  ,
+  Medico_idMedico:{
     type:DataTypes.INTEGER,
     references:{
       model:'Medico',
-      key:'id'
-    }
+      key:'idMedico'
+      }
   },
-  medicoConsultorioId:{
+  Medico_Consultorio_idConsultorio:{
+    type:
+    DataTypes.INTEGER,
+    references:{
+      model:'Medico',
+      key:'Consultorio_idConsultorio'
+      }
+  },
+  PlanoSaude_idPlanoSaude:{
     type:DataTypes.INTEGER,
     references:{
-      model:'Consultorio',
-      key:'id'
-    }
-  }
-})
+      model:'PlanoSaude',
+      key:'idPlanoSaude'
+      }
+  },
+  
+},
+    {tableName:'Consulta', timestamps:false}
+);
+
+
+
+
+  

@@ -8,7 +8,7 @@ export interface PlanoSaudeInstance extends Model{
 }
 
 export const PlanoSaude = sequelize.define<PlanoSaudeInstance>("PlanoSaude",{
-  id:{
+  idPlanoSaude:{
     primaryKey:true,
     type:DataTypes.INTEGER,
     autoIncrement:true,

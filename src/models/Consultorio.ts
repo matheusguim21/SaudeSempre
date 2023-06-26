@@ -1,33 +1,29 @@
 import { Model, DataTypes } from "sequelize";
 import {sequelize} from '../instances/mysql'
-import { Endereco } from "./Endereco";
+import { Endereco, EnderecoInstance } from "./Endereco";
 
 export interface ConsultorioInstance extends Model{
-  id:number;
-  name:string;
-  endereco:{
-    id:string;
-    rua:string;
-    numero:string;
-    bairro:string;
-    cidade:string;
-    estado:string;
-    cep:string
-  }
+  consultorio: EnderecoInstance[];
+  idConsultorio:number;
+  nome:string;
+  Endereco_idEndereco:number
+  endereco?:EnderecoInstance
 }
 
-export const Consultorio  = sequelize.define<ConsultorioInstance>("Consultorio", {
-  id:{
+export const Consultorio  = sequelize.define<ConsultorioInstance>("Consultorio", 
+{
+  idConsultorio:{
     primaryKey:true,
     type: DataTypes.INTEGER,
-    allowNull:false
+    allowNull:false,
+    autoIncrement:true
   },
   nome:{
     type: DataTypes.STRING,
     allowNull:false,
 
   },
-  enderecoId: {
+  Endereco_idEndereco: {
     type: DataTypes.INTEGER,
     references: {
       model: 'Endereco',
@@ -36,5 +32,9 @@ export const Consultorio  = sequelize.define<ConsultorioInstance>("Consultorio",
   }
   
   
-})
-Consultorio.belongsTo(Endereco, { foreignKey: 'enderecoId' });
+},
+{tableName:'Consultorio', timestamps:false}
+
+)
+Consultorio.belongsTo(Endereco, { foreignKey: 'Endereco_idEndereco' });
+

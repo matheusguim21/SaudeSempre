@@ -1,19 +1,23 @@
 import { Model,DataTypes } from "sequelize";
 import {sequelize} from '../instances/mysql'
+import { Endereco } from "./Endereco";
 
-export interface PacienteInstance extends Model{
-  id:number;
-  nome:string;
-  cpf:string;
-  enderecoId:number,
-  telefone:string;
-  dataNascimento:Date;
-  planoSaude:string;
-  atendimentoId:number
+export class PacienteInstance extends Model {
+  public idPaciente!: number;
+  public nome!: string;
+  public cpf!: string;
+  public Endereco_idEndereco!: number | null;
+  public telefone!: string;
+  public dataNascimento!: Date;
+  public PlanoSaude_idPlanoSaude!: string;
+  public Atendimento_idAtendimento!: number | null;
+
+  // Adicione aqui os demais atributos ou métodos da classe, se necessário
 }
 
 export const Paciente = sequelize.define('Paciente',{
-  id:{
+  
+  idPaciente  :{
     primaryKey:true,
     type:DataTypes.INTEGER,
     autoIncrement:true,
@@ -24,11 +28,11 @@ export const Paciente = sequelize.define('Paciente',{
     allowNull:false
   },
   cpf:{
-    type:DataTypes.CHAR(11),
+    type:DataTypes.STRING,
     allowNull:false,
     unique:true
   },
-  enderecoId:{
+  Endereco_idEndereco:{
     type:DataTypes.INTEGER,
     references:{
       model:'Endereco',
@@ -43,7 +47,7 @@ export const Paciente = sequelize.define('Paciente',{
     type:DataTypes.DATEONLY,
     allowNull:false
   },
-  planoSaude:{
+  PlanoSaude_idPlanoSaude:{
     type:DataTypes.STRING,
     allowNull:false,
     references:{
@@ -51,14 +55,16 @@ export const Paciente = sequelize.define('Paciente',{
       key:'id'
     }
   },
-  atendimentoId:{
+  Atendimento_idAtendimento:{
     type:DataTypes.INTEGER,
     references:{
       model:'Atendimento',
       key:'id'
     }
   }
-
-
-
-})
+   
+},
+{tableName:'Paciente', createdAt:false, updatedAt:false}
+)
+Paciente.belongsTo(Endereco,{foreignKey:'Endereco_idEndereco'})
+Endereco.hasMany(Paciente,{foreignKey:'Endereco_idEndereco'})

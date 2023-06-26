@@ -39,7 +39,6 @@ justify-content: center;
   justify-content: center;
   align-items: center;
   margin-right: -25%;
-  margin-left: 10%;  
   gap: 20px;
 }
 .navBtn{
@@ -82,4 +81,17 @@ section{
   padding: 10px;
   text-align: center;
   
+}
+#addsvg{
+  width: 10px;
+  height: 10px;
+  border: none;
+  outline: none;
+}
+.tableName{
+  text-align: center;
+  column-span: all;
+}
+.homeAnchor{
+  text-decoration: none;
 }

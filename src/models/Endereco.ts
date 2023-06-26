@@ -3,19 +3,19 @@ import {sequelize} from '../instances/mysql'
 
 
 export interface EnderecoInstance extends Model{
-  id:number,
-  rua:string,
-  numero:string,
-  bairro:string,
-  cidade:string,
-  estado:string,
-  cep:string
+  idEndereco: number;
+  rua: string;
+  numero: number;
+  bairro: string;
+  cidade: string;
+  estado: string;
+  cep: string;
 }
 
 export const Endereco = sequelize.define<EnderecoInstance>("Endereco",
 
 {
-    id:{
+    idEndereco:{
       type:DataTypes.INTEGER,
       allowNull:false,
       primaryKey:true
@@ -44,5 +44,6 @@ export const Endereco = sequelize.define<EnderecoInstance>("Endereco",
       type:DataTypes.STRING,
       allowNull:false
       }
-}
+},
+{tableName:'Endereco', createdAt:false, updatedAt:false}
 )

@@ -1,0 +1,48 @@
+{{>partials/header}}
+<div class="buttons">
+      <a href="consulta"><button class="navBtn" type="button">Agendar Consulta</button></a>
+      
+      <a href="pacientes"><button class="navBtn" type="button">Gerenciar Pacientes</button></a>
+    
+    </div>
+  </div>
+  <section>
+    <div class="main">
+
+      
+      <table class="tabela">
+        <tr><th colspan="9" class="tableName">Consultorios</th></tr>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>CEP</th>
+          <th>Rua</th>
+          <th>Número</th>
+          <th>Bairro</th>
+          <th>Cidade</th>
+          <th>Estado</th>
+          
+        </tr>
+        
+        {{#consultorios}}
+        <tr>
+          <td>{{idConsultorio}}</td>
+          <td>{{nome}}</td>
+          {{#endereco}}
+          <td>{{cep}}</td>
+          <td>{{rua}}</td>
+          <td>{{numero}}</td>
+          <td>{{bairro}}</td>
+          <td>{{cidade}}</td>
+          <td>{{estado}}</td>
+          <td><button type="button"><object id="addsvg" data="/assets/svgs/add.svg" ></object></button></td>
+        </tr>
+        {{/endereco}}
+        {{/consultorios}}
+      </table>
+    </div>
+  </section>
+
+</body>
+</html>
+    
