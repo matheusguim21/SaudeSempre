@@ -15,6 +15,9 @@ router.get('/pacientes', PacientesController.paciente )
 
 router.get('/consultorio', ConsultorioController.consultorio )
 
+router.delete('/consultorio/:id', ConsultorioController.removerConsultorio);
+
+
 
 
 router.post('/consultorio', ConsultorioController.salvarConsultorio);
