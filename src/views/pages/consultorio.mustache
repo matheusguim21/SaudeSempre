@@ -10,8 +10,36 @@
     <div class="main">
 
       
-      <table class="tabela">
-        <tr><th colspan="9" class="tableName">Consultorios</th></tr>
+        <div id="addScreen" style="display:none;">
+          <div class="modal-content">
+            <table class="addTable" id="dataInputTable" >
+              <span class="close-button">X</span>
+              <tr><th colspan="9" class="tableName">Consultorios</th></tr>
+              <tr>
+                <form id="consultorioForm" method="POST" action="consultorio">
+                  
+                  <th><input type="text" name="nome" placeholder="Nome" id=""></th>
+                  <th><input type="text" name="idEndereco" placeholder="idEndereco" id="idEndereco"></th>
+                  <th><input type="text" name="cep" placeholder="CEP" id="cep"></th>
+                  <th><input type="text" name="rua" placeholder="Rua" id="logradouro"></th>
+                  <th><input type="text" name="numero" placeholder="Número" id="numero"></th>
+                  <th><input type="text" name="bairro" placeholder="Bairro" id="bairro"></th>
+                  <th><input type="text" name="Cidade" placeholder="Cidade" id="localidade"></th>
+                  <th><input type="text" name="Estado" placeholder="Estado" id="uf"></th>
+  
+              </tr>
+              </table>
+              <button type="submit" id="saveButton">Salvar</button>
+                </form>
+          </div class="modal-content">
+          <div id="conclusaoModal" style="display: none;">
+              <h2>Operação concluída com sucesso!</h2>
+              <p>Os dados foram salvos com sucesso na tabela.</p>
+              <button id="fecharModal">Fechar</button>
+          </div>
+        </div>
+      <table class="tabela" id="mainScreen">
+        <tr><th colspan="10" class="tableName" >Consultorios</th></tr>
         <tr>
           <th>Id</th>
           <th>Nome</th>
@@ -21,7 +49,7 @@
           <th>Bairro</th>
           <th>Cidade</th>
           <th>Estado</th>
-          
+          <td colspan="2"><button type="button" id="addButton">Adicionar</button></td>
         </tr>
         
         {{#consultorios}}
@@ -35,14 +63,17 @@
           <td>{{bairro}}</td>
           <td>{{cidade}}</td>
           <td>{{estado}}</td>
-          <td><button type="button"><object id="addsvg" data="/assets/svgs/add.svg" ></object></button></td>
+          <td><button type="button" id="editButton" class="btn-edit" data-id="{{idConsultorio}}">Editar</button></td>
+          <td><button type="button" id="removeButton" class="btn-remove">Remover</button></td>
+
         </tr>
         {{/endereco}}
         {{/consultorios}}
       </table>
     </div>
+    
   </section>
-
+  <script src="/scripts/consultorio.js"></script>
 </body>
 </html>
     

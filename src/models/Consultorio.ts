@@ -3,12 +3,13 @@ import {sequelize} from '../instances/mysql'
 import { Endereco, EnderecoInstance } from "./Endereco";
 
 export interface ConsultorioInstance extends Model{
-  consultorio: EnderecoInstance[];
   idConsultorio:number;
   nome:string;
   Endereco_idEndereco:number
   endereco?:EnderecoInstance
 }
+
+
 
 export const Consultorio  = sequelize.define<ConsultorioInstance>("Consultorio", 
 {

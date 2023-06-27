@@ -15,4 +15,9 @@ router.get('/pacientes', PacientesController.paciente )
 
 router.get('/consultorio', ConsultorioController.consultorio )
 
+
+
+router.post('/consultorio', ConsultorioController.salvarConsultorio);
+
+
 export default router;
