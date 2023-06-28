@@ -15,7 +15,7 @@
           </tr>
           <tr>
             <form id="consultorioForm" method="POST" action="consultorio">
-              <th><input type="text" name="nome" placeholder="Nome" id=""></th>
+              <th><input type="text" name="nome" placeholder="Nome" id="nome"></th>
               <th><input type="text" name="idEndereco" placeholder="idEndereco" id="idEndereco"></th>
               <th><input type="text" name="cep" placeholder="CEP" id="cep"></th>
               <th><input type="text" name="rua" placeholder="Rua" id="logradouro"></th>
@@ -35,7 +35,28 @@
           <p>O consultório foi salvo com sucesso!</p>
         </div>
       </div>
-
+      <div id="editModal" class="modal" >
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h2>Editar Consultório</h2>
+          <form id="editConsultorioForm" method="POST" action="consultorio/update">
+            <input type="hidden" name="consultorioId" id="consultorioIdInput">
+            <table class="addTable" id="editDataInputTable">
+              <tr>
+                <th><input type="text" name="nome" placeholder="Nome" id="editNomeInput"></th>
+                <th><input type="text" name="idEndereco" placeholder="idEndereco" id="editIdEnderecoInput"></th>
+                <th><input type="text" name="cep" placeholder="CEP" id="editCepInput"></th>
+                <th><input type="text" name="rua" placeholder="Rua" id="editRuaInput"></th>
+                <th><input type="text" name="numero" placeholder="Número" id="editNumeroInput"></th >
+                <th><input type="text" name="bairro" placeholder="Bairro" id="editBairroInput"></th>
+                <th><input type="text" name="Cidade" placeholder="Cidade" id="editCidadeInput"></th>
+                <th><input type="text" name="Estado" placeholder="Estado" id="editEstadoInput"></th>  
+              </tr>
+            </table>
+            <button type="submit" id="updateButton">Atualizar</button>
+          </form>
+        </div>
+      </div>
     </div>
     <table class="tabela" id="mainScreen">
       <tr>
@@ -63,13 +84,12 @@
         <td>{{bairro}}</td>
         <td>{{cidade}}</td>
         <td>{{estado}}</td>
-        <td><button type="button" id="editButton" class="btn-edit">Editar</button></td>
-        <td><button type="button" id="removeButton" class="btn-remove" data-id="{{idConsultorio}}" data-endereco="{{idEndereco}}">Remover</button></td>
-</tr>
-{{/endereco}}
-{{/consultorios}}
-</table>
-
+        <td><button type="button" class="btn-edit" data-id="{{idConsultorio}}" data-nome="{{nome}}" data-idEndereco="{{idEndereco}}" data-cep="{{cep}}" data-rua="{{rua}}" data-numero="{{numero}}" data-bairro="{{bairro}}" data-cidade="{{cidade}}" data-estado="{{estado}}">Editar</button></td>
+        <td><button type="button" class="btn-remove" data-id="{{idConsultorio}}" data-endereco="{{idEndereco}}">Remover</button></td>
+      </tr>
+      {{/endereco}}
+      {{/consultorios}}
+    </table>
   </div>
 </section>
 <script src="/scripts/consultorio.js"></script>

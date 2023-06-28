@@ -257,3 +257,33 @@ th{
 .adress-th{
   background-color: rgb(238, 157, 157);
 }
+.modal-content {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 200px;
+  height: 40%;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content input[type="text"],
+.modal-content button {
+  margin-bottom: 10px;
+}
+
+.modal-content th {
+  padding: 10px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
