@@ -287,3 +287,23 @@ th{
 .modal-content h2 {
   margin-bottom: 20px;
 }
+#updateButton {
+  display: block;
+  margin: 0 auto; /* Centralizar horizontalmente */
+  margin-top: 20px;
+  background-color: #4caf50; /* Cor de fundo verde */
+  color: #ffffff; /* Cor do texto branco */
+  border: none; /* Sem borda */
+  padding: 10px 20px; /* Espaçamento interno */
+  font-size: 16px; /* Tamanho da fonte */
+  border-radius: 4px; /* Cantos arredondados */
+  cursor: pointer; /* Cursor de mão ao passar o mouse */
+}
+
+#updateButton:hover {
+  background-color: #45a049; /* Cor de fundo verde escuro ao passar o mouse */
+}
+
+#editDataInputTable input{
+  text-align: center;
+}

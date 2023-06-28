@@ -17,7 +17,7 @@ router.get('/consultorio', ConsultorioController.consultorio )
 
 router.delete('/consultorio/:consultorioId/:enderecoId', ConsultorioController.removerConsultorio);
 
-
+router.put('/consultorio/:consultorioId/:enderecoId', ConsultorioController.atualizarConsultorio);
 
 
 router.post('/consultorio', ConsultorioController.salvarConsultorio);

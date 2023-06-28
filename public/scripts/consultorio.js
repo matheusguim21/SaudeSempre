@@ -2,6 +2,7 @@ const mainScreen = document.getElementById('mainScreen');
 const addButton = document.getElementById('addButton');
 const addScreen = document.getElementById('addScreen');
 const closeAddScreenButton = addScreen.querySelector('.close-button');
+const cep = document.querySelector("#cep");
 
 addButton.addEventListener('click', () => {
   addScreen.style.display = 'block';
@@ -16,8 +17,6 @@ window.addEventListener('click', (event) => {
     addScreen.style.display = 'none';
   }
 });
-
-const cep = document.querySelector("#cep");
 
 const showData = (result) => {
   for (const campo in result) {
@@ -41,13 +40,12 @@ cep.addEventListener("blur", (e) => {
     .catch(e => console.log('Deu Erro: ' + e.message));
 });
 
-// consultorio.js
-
 document.addEventListener('DOMContentLoaded', function() {
   const addButton = document.getElementById('addButton');
   const saveButton = document.getElementById('saveButton');
   const editButtons = document.querySelectorAll('.btn-edit');
   const removeButtons = document.querySelectorAll('.btn-remove');
+  const updateButton = document.getElementById('updateButton');
 
   if (addButton) {
     addButton.addEventListener('click', function() {
@@ -110,11 +108,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const cidade = event.target.dataset.cidade;
         const estado = event.target.dataset.estado;
 
-        document.getElementById('editModal').style.display = 'block';
+        document.getElementById('editScreen').style.display = 'block';
         console.log('Chegou aqui')
-        document.getElementById('consultorioIdInput').value = consultorioId;
-        document.getElementById('editNomeInput').value = nome;
         document.getElementById('editIdEnderecoInput').value = idEndereco;
+        document.getElementById('editConsultorioIdInput').value = consultorioId;
+        document.getElementById('editNomeInput').value = nome;
         document.getElementById('editCepInput').value = cep;
         document.getElementById('editRuaInput').value = rua;
         document.getElementById('editNumeroInput').value = numero;
@@ -149,6 +147,55 @@ document.addEventListener('DOMContentLoaded', function() {
           console.error('ID do consultório não está definido');
         }
       });
+    });
+  }
+
+  if (updateButton) {
+  
+    updateButton.addEventListener('click', function() {
+      const consultorioId = document.getElementById('editConsultorioIdInput').value;
+      
+      const enderecoId = document.getElementById('editIdEnderecoInput').value;
+      const nome = document.getElementById('editNomeInput').value;
+      const cep = document.getElementById('editCepInput').value;
+      const rua = document.getElementById('editRuaInput').value;
+      const numero = document.getElementById('editNumeroInput').value;
+      const bairro = document.getElementById('editBairroInput').value;
+      const cidade = document.getElementById('editCidadeInput').value;
+      const estado = document.getElementById('editEstadoInput').value;
+      console.log("Id do Endereço: ", enderecoId)
+      const data = {
+        idEndereco: enderecoId,
+        nome: nome,
+        cep: cep,
+        rua: rua,
+        numero: numero,
+        bairro: bairro,
+        cidade: cidade,
+        estado: estado
+      };
+
+      const params = new URLSearchParams(data);
+    const url = `/consultorio/${consultorioId}/${enderecoId}/?${params}`;
+
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+        .then(response => {
+          if (response.ok) {
+            document.getElementById('editScreen').style.display = 'none';
+            // Aqui você pode adicionar ações adicionais, como exibir uma mensagem de sucesso ou recarregar a página.
+          } else {
+            console.error('Erro ao atualizar o consultório');
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao enviar a solicitação de atualização', error);
+        });
     });
   }
 });

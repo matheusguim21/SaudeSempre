@@ -10,3 +10,5 @@ export const consulta = (req:Request, res:Response)=>{
 
 
 
+
+

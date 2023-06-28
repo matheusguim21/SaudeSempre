@@ -94,3 +94,55 @@ export const removerConsultorio = async (req: Request, res: Response) => {
     res.sendStatus(500);
   }
 };
+
+  
+export const atualizarConsultorio = async (req: Request, res: Response) => {
+  try {
+    const consultorioId = req.params.consultorioId; // Obtém o valor do parâmetro consultorioId da URL
+    const enderecoId = req.params.enderecoId; // Obtém o valor do parâmetro enderecoId da URL
+    const data = req.body; // Obtém os dados enviados no corpo da requisição
+    console.log(enderecoId)
+    console.log(consultorioId)
+    console.log("data", data)
+    
+
+    // Atualiza os dados do endereço no banco de dados usando o enderecoId e os dados fornecidos
+    await Endereco.update(
+      {
+        cep: data.cep,
+        rua: data.rua,
+        numero: data.numero,
+        bairro: data.bairro,
+        cidade: data.cidade,
+        estado: data.estado,
+      },
+      {
+        where: {
+          idEndereco: enderecoId,
+        },
+      }
+    );
+
+    // Atualiza o consultório no banco de dados usando o consultorioId e os dados fornecidos
+    await Consultorio.update(
+      {
+        nome: data.nome,
+      },
+      {
+        where: {
+          idConsultorio: consultorioId,
+        },
+      }
+    );
+
+    // Redireciona para uma página de sucesso ou retorna uma resposta adequada
+    res.render('pages/consultorio', {
+      message: 'Dados atualizados com sucesso',
+    });
+  } catch (error) {
+    // Lida com erros de validação ou outros erros
+    console.error(error);
+    res.redirect('/error');
+  }
+};
+

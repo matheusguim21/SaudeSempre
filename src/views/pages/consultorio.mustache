@@ -28,36 +28,56 @@
         <button type="submit" id="saveButton">Salvar</button>
         </form>
       </div>
-      <div id="conclusaoModal" class="modal">
-        <div class="modal-content">
-          <span class="close-button">&times;</span>
-          <h2>Modal de Conclusão</h2>
-          <p>O consultório foi salvo com sucesso!</p>
-        </div>
-      </div>
-      <div id="editModal" class="modal" >
-        <div class="modal-content">
-          <span class="close-button">&times;</span>
-          <h2>Editar Consultório</h2>
-          <form id="editConsultorioForm" method="POST" action="consultorio/update">
-            <input type="hidden" name="consultorioId" id="consultorioIdInput">
-            <table class="addTable" id="editDataInputTable">
-              <tr>
-                <th><input type="text" name="nome" placeholder="Nome" id="editNomeInput"></th>
-                <th><input type="text" name="idEndereco" placeholder="idEndereco" id="editIdEnderecoInput"></th>
-                <th><input type="text" name="cep" placeholder="CEP" id="editCepInput"></th>
-                <th><input type="text" name="rua" placeholder="Rua" id="editRuaInput"></th>
-                <th><input type="text" name="numero" placeholder="Número" id="editNumeroInput"></th >
-                <th><input type="text" name="bairro" placeholder="Bairro" id="editBairroInput"></th>
-                <th><input type="text" name="Cidade" placeholder="Cidade" id="editCidadeInput"></th>
-                <th><input type="text" name="Estado" placeholder="Estado" id="editEstadoInput"></th>  
-              </tr>
-            </table>
-            <button type="submit" id="updateButton">Atualizar</button>
-          </form>
-        </div>
+      
+    </div>
+    
+    <div id="editScreen" style="display:none;">
+      <div class="modal-content">
+        <table class="addTable" id="editDataInputTable">
+          <span class="close-button">X</span>
+          <tr>
+            <th colspan="9" class="tableName">Editar Consultório</th>
+          </tr>
+          <tr>
+            <form id="editConsultorioForm" method="POST" action="consultorio">
+              <input type="hidden" name="consultorioId" id="editConsultorioIdInput">
+              <th>
+                  <label for="editNomeInput">Nome</label>
+                  <input type="text" name="nome" placeholder="Nome" id="editNomeInput">
+                </th>
+                <th><input type="hidden" name="idEndereco" placeholder="idEndereco" id="editIdEnderecoInput"></th>
+                <th>
+                  <label for="editCepInput">CEP</label>
+                  <input type="text" name="cep" placeholder="CEP" id="editCepInput">
+                </th>
+                <th>
+                  <label for="editRuaInput">Rua</label>
+                  <input type="text" name="rua" placeholder="Rua" id="editRuaInput">
+                </th>
+                <th>
+                  <label for="editNumeroInput">Número</label>
+                  <input type="text" name="numero" placeholder="Número" id="editNumeroInput">
+                </th>
+                <th>
+                  <label for="editBairroInput">Bairro</label>
+                  <input type="text" name="bairro" placeholder="Bairro" id="editBairroInput">
+                </th>
+                <th>
+                  <label for="editCidadeInput">Cidade</label>
+                  <input type="text" name="cidade" placeholder="Cidade" id="editCidadeInput">
+                </th>
+                <th>
+                  <label for="editEstadoInput">Estado</label>
+                  <input type="text" name="estado" placeholder="Estado" id="editEstadoInput">
+                </th>
+
+          </tr>
+        </table>
+        <button type="submit" id="updateButton">Atualizar</button>
+        </form>
       </div>
     </div>
+    
     <table class="tabela" id="mainScreen">
       <tr>
         <th colspan="10" class="tableName">Consultorios</th>
