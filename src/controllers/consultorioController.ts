@@ -64,6 +64,7 @@ res.render('pages/consultorio', {
 });
 
 
+
   } catch (error) {
     // Lidar com erros de validação ou outros erros
     console.error(error);
@@ -72,7 +73,8 @@ res.render('pages/consultorio', {
 };
 export const removerConsultorio = async (req: Request, res: Response) => {
   try {
-    const consultorioId = req.params.id;
+    
+    const { consultorioId, enderecoId } = req.params;
 
     // Exclui o consultório do banco de dados
     await Consultorio.destroy({
@@ -80,6 +82,11 @@ export const removerConsultorio = async (req: Request, res: Response) => {
         idConsultorio: consultorioId,
       },
     });
+    await Endereco.destroy({
+      where:{
+        idEndereco: enderecoId,
+      }
+    })
 
     res.sendStatus(200);
   } catch (error) {

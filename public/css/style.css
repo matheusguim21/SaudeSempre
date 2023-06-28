@@ -68,6 +68,7 @@ section{
 
 .tabela{
   margin: auto;
+  margin-bottom: 10%  ;
   width: 90%;
   color: #000000;
   border: 2px solid #f30d0d;
@@ -76,11 +77,16 @@ section{
   
   
 }
+th{
+  background-color: rgb(236, 77, 77);
+  
+}
  td, th{
   border: 1px solid #000;
   padding: 10px;
   text-align: center;
   
+
 }
 #addButton {
   background-color: #4caf50; /* Cor de fundo verde */
@@ -233,4 +239,21 @@ section{
   cursor: pointer;
   border-radius: 4px;
   border: 1px solid #bee5eb;
+}
+
+.btn-add {
+  background-color: #c3e6cb;
+  color: #155724;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #b1dfbb;
+}
+
+.button-top {
+  vertical-align: top;
+}
+.adress-th{
+  background-color: rgb(238, 157, 157);
 }

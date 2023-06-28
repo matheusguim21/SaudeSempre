@@ -1,79 +1,77 @@
 {{>partials/header}}
 <div class="buttons">
-      <a href="consulta"><button class="navBtn" type="button">Agendar Consulta</button></a>
-      
-      <a href="pacientes"><button class="navBtn" type="button">Gerenciar Pacientes</button></a>
-    
-    </div>
-  </div>
-  <section>
-    <div class="main">
-
-      
-        <div id="addScreen" style="display:none;">
-          <div class="modal-content">
-            <table class="addTable" id="dataInputTable" >
-              <span class="close-button">X</span>
-              <tr><th colspan="9" class="tableName">Consultorios</th></tr>
-              <tr>
-                <form id="consultorioForm" method="POST" action="consultorio">
-                  
-                  <th><input type="text" name="nome" placeholder="Nome" id=""></th>
-                  <th><input type="text" name="idEndereco" placeholder="idEndereco" id="idEndereco"></th>
-                  <th><input type="text" name="cep" placeholder="CEP" id="cep"></th>
-                  <th><input type="text" name="rua" placeholder="Rua" id="logradouro"></th>
-                  <th><input type="text" name="numero" placeholder="Número" id="numero"></th>
-                  <th><input type="text" name="bairro" placeholder="Bairro" id="bairro"></th>
-                  <th><input type="text" name="Cidade" placeholder="Cidade" id="localidade"></th>
-                  <th><input type="text" name="Estado" placeholder="Estado" id="uf"></th>
-  
-              </tr>
-              </table>
-              <button type="submit" id="saveButton">Salvar</button>
-                </form>
-          </div class="modal-content">
-          <div id="conclusaoModal" style="display: none;">
-              <h2>Operação concluída com sucesso!</h2>
-              <p>Os dados foram salvos com sucesso na tabela.</p>
-              <button id="fecharModal">Fechar</button>
-          </div>
+  <a href="consulta"><button class="navBtn" type="button">Agendar Consulta</button></a>
+  <a href="pacientes"><button class="navBtn" type="button">Gerenciar Pacientes</button></a>
+</div>
+</div>
+<section>
+  <div class="main">
+    <div id="addScreen" style="display:none;">
+      <div class="modal-content">
+        <table class="addTable" id="dataInputTable">
+          <span class="close-button">X</span>
+          <tr>
+            <th colspan="9" class="tableName">Consultorios</th>
+          </tr>
+          <tr>
+            <form id="consultorioForm" method="POST" action="consultorio">
+              <th><input type="text" name="nome" placeholder="Nome" id=""></th>
+              <th><input type="text" name="idEndereco" placeholder="idEndereco" id="idEndereco"></th>
+              <th><input type="text" name="cep" placeholder="CEP" id="cep"></th>
+              <th><input type="text" name="rua" placeholder="Rua" id="logradouro"></th>
+              <th><input type="text" name="numero" placeholder="Número" id="numero"></th>
+              <th><input type="text" name="bairro" placeholder="Bairro" id="bairro"></th>
+              <th><input type="text" name="Cidade" placeholder="Cidade" id="localidade"></th>
+              <th><input type="text" name="Estado" placeholder="Estado" id="uf"></th>
+          </tr>
+        </table>
+        <button type="submit" id="saveButton">Salvar</button>
+        </form>
+      </div>
+      <div id="conclusaoModal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h2>Modal de Conclusão</h2>
+          <p>O consultório foi salvo com sucesso!</p>
         </div>
-      <table class="tabela" id="mainScreen">
-        <tr><th colspan="10" class="tableName" >Consultorios</th></tr>
-        <tr>
-          <th>Id</th>
-          <th>Nome</th>
-          <th>CEP</th>
-          <th>Rua</th>
-          <th>Número</th>
-          <th>Bairro</th>
-          <th>Cidade</th>
-          <th>Estado</th>
-          <td colspan="2"><button type="button" id="addButton">Adicionar</button></td>
-        </tr>
-        
-        {{#consultorios}}
-        <tr>
-          <td>{{idConsultorio}}</td>
-          <td>{{nome}}</td>
-          {{#endereco}}
-          <td>{{cep}}</td>
-          <td>{{rua}}</td>
-          <td>{{numero}}</td>
-          <td>{{bairro}}</td>
-          <td>{{cidade}}</td>
-          <td>{{estado}}</td>
-          <td><button type="button" id="editButton" class="btn-edit" >Editar</button></td>
-          <td><button type="button" id="removeButton" class="btn-remove" data-id="{{idConsultorio}}">Remover</button></td>
+      </div>
 
-        </tr>
-        {{/endereco}}
-        {{/consultorios}}
-      </table>
     </div>
-    
-  </section>
-  <script src="/scripts/consultorio.js"></script>
+    <table class="tabela" id="mainScreen">
+      <tr>
+        <th colspan="10" class="tableName">Consultorios</th>
+      </tr>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>CEP</th>
+        <th>Rua</th>
+        <th>Número</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+        <td colspan="2"><button type="button" id="addButton">Adicionar</button></td>
+      </tr>
+      {{#consultorios}}
+      <tr>
+        <td>{{idConsultorio}}</td>
+        <td>{{nome}}</td>
+        {{#endereco}}
+        <td>{{cep}}</td>
+        <td>{{rua}}</td>
+        <td>{{numero}}</td>
+        <td>{{bairro}}</td>
+        <td>{{cidade}}</td>
+        <td>{{estado}}</td>
+        <td><button type="button" id="editButton" class="btn-edit">Editar</button></td>
+        <td><button type="button" id="removeButton" class="btn-remove" data-id="{{idConsultorio}}" data-endereco="{{idEndereco}}">Remover</button></td>
+</tr>
+{{/endereco}}
+{{/consultorios}}
+</table>
+
+  </div>
+</section>
+<script src="/scripts/consultorio.js"></script>
 </body>
 </html>
-    

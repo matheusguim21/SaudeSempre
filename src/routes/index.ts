@@ -11,11 +11,11 @@ router.get('/home', HomeController.home)
 
 router.get('/consulta',ConsultasCOntroller.consulta  )
 
-router.get('/pacientes', PacientesController.paciente )
+router.get('/pacientes', PacientesController.pacientes )
 
 router.get('/consultorio', ConsultorioController.consultorio )
 
-router.delete('/consultorio/:id', ConsultorioController.removerConsultorio);
+router.delete('/consultorio/:consultorioId/:enderecoId', ConsultorioController.removerConsultorio);
 
 
 

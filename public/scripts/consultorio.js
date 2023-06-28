@@ -1,13 +1,13 @@
 const mainScreen = document.getElementById('mainScreen');
 const addButton = document.getElementById('addButton');
 const addScreen = document.getElementById('addScreen');
-const closeButton = document.querySelector('.close-button');
+const closeAddScreenButton = document.querySelector('.close-button');
 
 addButton.addEventListener('click', () => {
   addScreen.style.display = 'block';
 });
 
-closeButton.addEventListener('click', () => {
+closeAddScreenButton.addEventListener('click', () => {
   addScreen.style.display = 'none';
 });
 
@@ -54,58 +54,46 @@ document.addEventListener('DOMContentLoaded', () => {
   fecharModalButton.addEventListener('click', () => {
     modal.style.display = 'none';
   });
-
-  // Verificar se a modal deve ser exibida ao carregar a página
-  const shouldShowModal = sessionStorage.getItem('showConclusaoModal');
-  if (shouldShowModal) {
-    modal.style.display = 'block';
-    sessionStorage.removeItem('showConclusaoModal');
-  }
-});
-
-// Código para mostrar o modal de conclusão
-function mostrarModalConclusao() {
-  const modal = document.getElementById("conclusaoModal");
-  modal.style.display = "block";
-}
-
-// Código para fechar o modal de conclusão
-function fecharModalConclusao() {
-  const modal = document.getElementById("conclusaoModal");
-  modal.style.display = "none";
-}
-
-// Event listener para o botão de fechar o modal
-const fecharModalButton = document.getElementById("fecharModal");
-fecharModalButton.addEventListener("click", fecharModalConclusao);
-
+  })
+  
 // Captura o evento de clique do botão "Remover"
 document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('btn-remove')) {
-      // Obtém o ID do consultório a ser removido
-      const consultorioId = event.target.dataset.id;
+  if (event.target.classList.contains('btn-remove')) {
+    // Obtém o ID do consultório a ser removido
+    const consultorioId = event.target.dataset.id;
+    const enderecoId = event.target.dataset.endereco;
+
+    // Verifica se o ID do consultório e do endereço estão definidos
+    if (consultorioId ) {
+
       console.log(consultorioId)
-      // Verifica se o ID do consultório está definido
-      if (consultorioId) {
+      console.log(enderecoId)
+
+      // Cria um objeto com os dados a serem enviados no corpo da requisição
+      const 
+      dados = {
+      consultorioId: consultorioId,
+      enderecoId: enderecoId
+      };
         // Envia uma solicitação de exclusão para o servidor
-        fetch(`/consultorio/${consultorioId}`, {
-          method: 'DELETE',
-        })
-        .then(response => {
-          // Verifica se a solicitação foi bem-sucedida
-          if (response.ok) {
-            // Atualiza a página ou realiza qualquer outra ação necessária
-            window.location.reload();
-          } else {
-            console.error('Erro ao excluir o consultório');
-          }
-        })
-        .catch(error => {
-          console.error('Erro ao enviar a solicitação de exclusão', error);
-        });
+  fetch(`/consultorio/${consultorioId}/${enderecoId}`, {
+    method: 'DELETE',
+    
+  })
+    .then(response => {
+      // Verifica se a solicitação foi bem-sucedida
+      if (response.ok) {
+        // Atualiza a página ou realiza qualquer outra ação necessária
+        window.location.reload();
       } else {
-        console.error('ID do consultório não está definido');
+        console.error('Erro ao excluir o consultório');
       }
-    }
-  });
-  
+    })
+    .catch(error => {
+      console.error('Erro ao enviar a solicitação de exclusão', error);
+    });
+  } else {
+    console.error('ID do consultório não está definido');
+  }
+}
+});

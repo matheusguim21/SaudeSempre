@@ -1,6 +1,6 @@
 {{>partials/header}}
 <div class="buttons">
-      <a href="home"><button class="navBtn" type="button">Página Inicial</button></a>
+      <a href="/consultorio"><button class="navBtn" type="button">Gerenciar Consultórios</button></a>
       
       <a href="pacientes"><button class="navBtn" type="button">Gerenciar Consultas</button></a>
     
@@ -9,30 +9,55 @@
   <section>
     <div class="main">
     
-      <table class="tabela">
-        <tr>
-          <th>Id</th>
-          <th>N° Atendimento</th>
-          <th>Nome</th>
-          <th>CPF</th>
-          <th>Data de Nascimento</th>
-          <th>Telefone</th>
-          <th>Plano de Saúde</th>
-          <th>Endereço</th>
-        </tr>
-        {{#pacientes}}
-        <tr>
-          <td>{{idPaciente}}</td>
-          <td>{{Atendimento_idAtendimento}}</td>
-          <td>{{nome}}</td>
-          <td>{{cpf}}</td>
-          <td>{{dataNascimento}}</td>
-          <td>{{telefone}}</td>
-          <td>{{planoSaude}}</td>
-          <td>{{endereco}}</td>
-        </tr>
-        {{/pacientes}}
-      </table>
+     <table class="tabela">
+  {{#pacientes}}
+  <tr>
+    <th>Id</th>
+    <th>N° Atendimento</th>
+    <th>Nome</th>
+    <th>CPF</th>
+    <th>Data de Nascimento</th>
+    <th>Telefone</th>
+    <th>Plano de Saúde</th>
+  </tr>
+  <tr>
+    <td>{{idPaciente}}</td>
+    <td>{{Atendimento_idAtendimento}}</td>
+    <td>{{nome}}</td>
+    <td>{{cpf}}</td>
+    <td>{{dataNascimento}}</td>
+    <td>{{telefone}}</td>
+    <td>{{planoSaude.nomePlano}}</td>
+  </tr>
+  <tr>
+    <th colspan="7">Endereço</th>
+  </tr>
+  <tr>
+    <th class="adress-th">CEP</th>
+    <th class="adress-th">Número</th>
+    <th class="adress-th">Bairro</th>
+    <th class="adress-th">Cidade</th>
+    <th class="adress-th">Rua</th>
+    <th class="adress-th">Estado</th>
+    <td rowspan="2" class="td-buttons">
+      <button class="btn-add">Adicionar</button>
+      <button class="btn-edit">Editar</button>
+      <button class="btn-remove">Excluir</button>
+    </td>
+  </tr>
+  <tr>
+    <td>{{endereco.cep}}</td>
+    <td> {{endereco.numero}}</td>
+    <td> {{endereco.bairro}}</td>
+    <td> {{endereco.cidade}}</td>
+    <td>{{endereco.rua}}  </td>
+    <td>{{endereco.estado}}</td>
+    
+  
+  </tr>
+  {{/pacientes}}
+</table>
+
     </div>
   </section>
 

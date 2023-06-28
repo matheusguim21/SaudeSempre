@@ -1,21 +1,25 @@
 import { Model,DataTypes } from "sequelize";
 import {sequelize} from '../instances/mysql'
 import { Endereco } from "./Endereco";
+import { EnderecoInstance } from "./Endereco";
+import { PlanoSaudeInstance } from "./PlanoSaude";
 
-export class PacienteInstance extends Model {
-  public idPaciente!: number;
-  public nome!: string;
-  public cpf!: string;
-  public Endereco_idEndereco!: number | null;
-  public telefone!: string;
-  public dataNascimento!: Date;
-  public PlanoSaude_idPlanoSaude!: string;
-  public Atendimento_idAtendimento!: number | null;
-
-  // Adicione aqui os demais atributos ou métodos da classe, se necessário
+export interface PacienteInstance extends Model {
+  idPaciente: number;
+  nome: string;
+  cpf: string;
+  Endereco_idEndereco: number | null;
+  telefone: string;
+  dataNascimento: Date;
+  PlanoSaude_idPlanoSaude: string;
+  Atendimento_idAtendimento: number | null;
+  endereco?: EnderecoInstance;
+  planoSaude?: PlanoSaudeInstance;
+  dataNascimentoFormatada?: string;
 }
 
-export const Paciente = sequelize.define('Paciente',{
+
+export const Paciente = sequelize.define<PacienteInstance>('Paciente',{
   
   idPaciente  :{
     primaryKey:true,

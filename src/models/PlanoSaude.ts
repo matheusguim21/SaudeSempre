@@ -14,8 +14,8 @@ export const PlanoSaude = sequelize.define<PlanoSaudeInstance>("PlanoSaude",{
     autoIncrement:true,
     allowNull:false
   },
-  nome:{
+  nomePlano:{
     type:DataTypes.STRING,
     allowNull:false
   }
-})
+}, {tableName:'PlanoSaude', timestamps:false})
