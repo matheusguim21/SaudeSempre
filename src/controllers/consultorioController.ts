@@ -1,7 +1,7 @@
 import { Request,Response } from "express"
 
 import { Consultorio } from "../models/Consultorio"
-import { Endereco, EnderecoInstance } from "../models/Endereco"
+import { Endereco } from "../models/Endereco"
 import { ConsultorioInstance} from "../models/Consultorio"
 
 let consultoriosEndereco:ConsultorioInstance[]

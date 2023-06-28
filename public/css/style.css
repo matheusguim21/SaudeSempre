@@ -168,7 +168,7 @@ th{
   border: 1px solid #ddd;
 }
 
-.addTable input[type="text"] {
+.addTable input[type="text"] , .addTable input[type="date"]{
   width: 100%;
   padding: 8px;
   border: 1px solid #ddd;

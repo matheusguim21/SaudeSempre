@@ -10,7 +10,41 @@
   <section>
     <div class="main">
 
-    
+      <div id="addScreen" style="display:none;">
+  <div class="modal-content">
+    <table class="addTable" id="dataInputTable">
+      <span class="close-button">X</span>
+      <tr>
+        <th colspan="12" class="tableName">Consultas</th>
+      </tr>
+      <tr>
+        <form id="consultaForm" method="POST" action="home">
+          <th><input type="text" name="id" placeholder="ID" id="id"></th>
+          <th><input type="date" name="data" placeholder="Data" id="data"></th>
+          <th><input type="text" name="tipo" placeholder="Tipo" id="tipo"></th>
+          <th><input type="text" name="status" placeholder="Status" id="status"></th>
+          <th><input type="text" name="planoSaudeId" placeholder="ID do Plano de Saúde" id="planoSaudeId"></th>
+          <th><input type="text" name="pacienteId" placeholder="ID do Paciente" id="pacienteId"></th>
+          <th><input type="text" name="pacientePlanoId" placeholder="ID do PacientePlano" id="pacientePlanoId"></th>
+          <th><input type="text" name="atendenteId" placeholder="ID do Atendente" id="atendenteId"></th>
+          <th><input type="text" name="atendenteConsultorioId" placeholder="ID do Consultório do Atendente" id="atendenteConsultorioId"></th>
+          <tr>  
+          <th><input type="text" name="medicoId" placeholder="ID do Médico" id="medicoId"></th>
+          <th><input type="text" name="medicoConsultorioId" placeholder="ID do Consultório do Médico" id="medicoConsultorioId"></th>
+          <th><input type="text" name="idEndereco" placeholder="idEndereco" id="idEndereco"></th>
+              <th><input type="text" name="cep" placeholder="CEP" id="cep"></th>
+              <th><input type="text" name="numero" placeholder="Número" id="numero"></th>
+              <th><input type="text" name="rua" placeholder="Rua" id="logradouro"></th>
+              <th><input type="text" name="bairro" placeholder="Bairro" id="bairro"></th>
+              <th><input type="text" name="Cidade" placeholder="Cidade" id="localidade"></th>
+              <th><input type="text" name="Estado" placeholder="Estado" id="uf"></th>
+          </tr>
+      </tr>
+    </table>
+    <button type="submit" id="saveButton">Salvar</button>
+    </form>
+  </div>
+</div>
       <table class="tabela">
         <tr>
           <th>Id Consulta</th>
@@ -24,6 +58,7 @@
           <th>Consultório Atendente</th>
           <th>Médico</th>
           <th>Consultório do Médico</th>
+         <td colspan="2"><button type="button" id="addButton">Adicionar</button></td>
         </tr>
         {{#consultas}}
         <tr>
@@ -44,6 +79,7 @@
     </div>
   </section>
 
+<script src="/scripts/consulta.js"></script>
 </body>
 </html>
     

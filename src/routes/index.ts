@@ -9,7 +9,7 @@ const router = Router();
 
 router.get('/home', HomeController.home)
 
-router.get('/consulta',ConsultasCOntroller.consulta  )
+router.post('/home',HomeController.cadastrarConsulta  )
 
 router.get('/pacientes', PacientesController.pacientes )
 
