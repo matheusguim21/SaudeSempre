@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         medicoId: medicoId,
         medicoConsultorioId: medicoConsultorioId
       };
+      console.log(dataValues)
 
       fetch('/home', {
         method: 'POST',

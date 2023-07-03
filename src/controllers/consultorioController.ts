@@ -38,6 +38,7 @@ export const salvarConsultorio = async (req: Request, res: Response) => {
     const { idEndereco,nome, cep, rua, numero, bairro, Cidade, Estado } = req.body;
 
     console.info(idEndereco)
+    console.info(idEndereco)
     // Salvar o endereço
     const endereco = await Endereco.create({
       idEndereco,
@@ -100,21 +101,20 @@ export const atualizarConsultorio = async (req: Request, res: Response) => {
   try {
     const consultorioId = req.params.consultorioId; // Obtém o valor do parâmetro consultorioId da URL
     const enderecoId = req.params.enderecoId; // Obtém o valor do parâmetro enderecoId da URL
-    const data = req.body; // Obtém os dados enviados no corpo da requisição
+    const {nome,cep, rua, numero, bairro,cidade,estado} = req.body; // Obtém os dados enviados no corpo da requisição
     console.log(enderecoId)
     console.log(consultorioId)
-    console.log("data", data)
-    
+    console.log(req.body)
 
     // Atualiza os dados do endereço no banco de dados usando o enderecoId e os dados fornecidos
     await Endereco.update(
       {
-        cep: data.cep,
-        rua: data.rua,
-        numero: data.numero,
-        bairro: data.bairro,
-        cidade: data.cidade,
-        estado: data.estado,
+        cep: cep,
+        rua: rua,
+        numero: numero,
+        bairro: bairro,
+        cidade: cidade,
+        estado: estado,
       },
       {
         where: {
@@ -126,7 +126,7 @@ export const atualizarConsultorio = async (req: Request, res: Response) => {
     // Atualiza o consultório no banco de dados usando o consultorioId e os dados fornecidos
     await Consultorio.update(
       {
-        nome: data.nome,
+        nome: nome
       },
       {
         where: {

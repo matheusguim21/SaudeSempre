@@ -1,6 +1,6 @@
 {{>partials/header}}
 <div class="buttons">
-  <a href="consulta"><button class="navBtn" type="button">Agendar Consulta</button></a>
+  <a href="home"><button class="navBtn" type="button">Agendar Consulta</button></a>
   <a href="pacientes"><button class="navBtn" type="button">Gerenciar Pacientes</button></a>
 </div>
 </div>
@@ -39,13 +39,15 @@
             <th colspan="9" class="tableName">Editar Consultório</th>
           </tr>
           <tr>
-            <form id="editConsultorioForm" method="POST" action="consultorio">
+          
+            <form id="editConsultorioForm" method="POST"  action="/consultorio/{{consultorioId}}/{{enderecoId}}" >
+            <input type="hidden" name="_method" value="PUT">
               <input type="hidden" name="consultorioId" id="editConsultorioIdInput">
               <th>
                   <label for="editNomeInput">Nome</label>
                   <input type="text" name="nome" placeholder="Nome" id="editNomeInput">
                 </th>
-                <th><input type="hidden" name="idEndereco" placeholder="idEndereco" id="editIdEnderecoInput"></th>
+                <th><input type="text" name="idEndereco" placeholder="idEndereco" id="editIdEnderecoInput"></th>
                 <th>
                   <label for="editCepInput">CEP</label>
                   <input type="text" name="cep" placeholder="CEP" id="editCepInput">
@@ -104,7 +106,8 @@
         <td>{{bairro}}</td>
         <td>{{cidade}}</td>
         <td>{{estado}}</td>
-        <td><button type="button" class="btn-edit" data-id="{{idConsultorio}}" data-nome="{{nome}}" data-idEndereco="{{idEndereco}}" data-cep="{{cep}}" data-rua="{{rua}}" data-numero="{{numero}}" data-bairro="{{bairro}}" data-cidade="{{cidade}}" data-estado="{{estado}}">Editar</button></td>
+        <td><button type="button" class="btn-edit" data-id="{{idConsultorio}}" data-nome="{{nome}}" data-idendereco="{{idEndereco}}" data-cep="{{cep}}" data-rua="{{rua}}" data-numero="{{numero}}" data-bairro="{{bairro}}" data-cidade="{{cidade}}" data-estado="{{estado}}">Editar</button></td>
+
         <td><button type="button" class="btn-remove" data-id="{{idConsultorio}}" data-endereco="{{idEndereco}}">Remover</button></td>
       </tr>
       {{/endereco}}

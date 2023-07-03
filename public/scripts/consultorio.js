@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (saveButton) {
-    saveButton.addEventListener('click', function() {
+    saveButton.addEventListener('click', function(event) {
       const nome = document.getElementById('nome').value;
       const idEndereco = document.getElementById('idEndereco').value;
       const cep = document.getElementById('cep').value;
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cidade: cidade,
         estado: estado
       };
-
+      
       fetch('/consultorio', {
         method: 'POST',
         headers: {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
       button.addEventListener('click', function(event) {
         const consultorioId = event.target.dataset.id;
         const nome = event.target.dataset.nome;
-        const idEndereco = event.target.dataset.idEndereco;
+        const idEndereco = event.target.dataset.idendereco;
         const cep = event.target.dataset.cep;
         const rua = event.target.dataset.rua;
         const numero = event.target.dataset.numero;
@@ -123,6 +123,60 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  
+
+  if (updateButton) {
+  
+    updateButton.addEventListener('click', function(evento) {
+
+      // evento.preventDefault()
+
+
+      const consultorioId = document.getElementById('editConsultorioIdInput').value;
+      
+      const enderecoId = document.getElementById('editIdEnderecoInput').value;
+      const nome = document.getElementById('editNomeInput').value;
+      const cep = document.getElementById('editCepInput').value;
+      const rua = document.getElementById('editRuaInput').value;
+      const numero = document.getElementById('editNumeroInput').value;
+      const bairro = document.getElementById('editBairroInput').value;
+      const cidade = document.getElementById('editCidadeInput').value;
+      const estado = document.getElementById('editEstadoInput').value;
+      
+      const data = {
+        nome: nome,
+        idEndereco: enderecoId,
+        cep: cep,
+        rua: rua,
+        numero: numero,
+        bairro: bairro,
+        cidade: cidade,
+        estado: estado
+      };
+      console.log("Data: ", data)
+
+    const url = `/consultorio/${consultorioId}/${enderecoId}`;
+
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+        .then(response => {
+          if (response.ok) {
+            document.getElementById('editScreen').style.display = 'none';
+            // Aqui você pode adicionar ações adicionais, como exibir uma mensagem de sucesso ou recarregar a página.
+          } else {
+            console.error('Erro ao atualizar o consultório');
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao enviar a solicitação de atualização', error);
+        });
+    });
+  }
   if (removeButtons) {
     removeButtons.forEach(function(button) {
       button.addEventListener('click', function(event) {
@@ -147,55 +201,6 @@ document.addEventListener('DOMContentLoaded', function() {
           console.error('ID do consultório não está definido');
         }
       });
-    });
-  }
-
-  if (updateButton) {
-  
-    updateButton.addEventListener('click', function() {
-      const consultorioId = document.getElementById('editConsultorioIdInput').value;
-      
-      const enderecoId = document.getElementById('editIdEnderecoInput').value;
-      const nome = document.getElementById('editNomeInput').value;
-      const cep = document.getElementById('editCepInput').value;
-      const rua = document.getElementById('editRuaInput').value;
-      const numero = document.getElementById('editNumeroInput').value;
-      const bairro = document.getElementById('editBairroInput').value;
-      const cidade = document.getElementById('editCidadeInput').value;
-      const estado = document.getElementById('editEstadoInput').value;
-      console.log("Id do Endereço: ", enderecoId)
-      const data = {
-        idEndereco: enderecoId,
-        nome: nome,
-        cep: cep,
-        rua: rua,
-        numero: numero,
-        bairro: bairro,
-        cidade: cidade,
-        estado: estado
-      };
-
-      const params = new URLSearchParams(data);
-    const url = `/consultorio/${consultorioId}/${enderecoId}/?${params}`;
-
-    fetch(url, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-        .then(response => {
-          if (response.ok) {
-            document.getElementById('editScreen').style.display = 'none';
-            // Aqui você pode adicionar ações adicionais, como exibir uma mensagem de sucesso ou recarregar a página.
-          } else {
-            console.error('Erro ao atualizar o consultório');
-          }
-        })
-        .catch(error => {
-          console.error('Erro ao enviar a solicitação de atualização', error);
-        });
     });
   }
 });
