@@ -1,41 +1,35 @@
 import { Model, DataTypes } from "sequelize";
-import {sequelize} from '../instances/mysql'
+import { sequelize } from "../instances/postgres";
 import { Endereco, EnderecoInstance } from "./Endereco";
 
-export interface ConsultorioInstance extends Model{
-  idConsultorio:number;
-  nome:string;
-  Endereco_idEndereco:number
-  endereco?:EnderecoInstance
+export interface ConsultorioInstance extends Model {
+  idConsultorio: number;
+  nome: string;
+  Endereco_idEndereco: number;
+  endereco?: EnderecoInstance;
 }
 
-
-
-export const Consultorio  = sequelize.define<ConsultorioInstance>("Consultorio", 
-{
-  idConsultorio:{
-    primaryKey:true,
-    type: DataTypes.INTEGER,
-    allowNull:false,
-    autoIncrement:true
+export const Consultorio = sequelize.define<ConsultorioInstance>(
+  "Consultorio",
+  {
+    idConsultorio: {
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+    },
+    nome: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    Endereco_idEndereco: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Endereco",
+        key: "id",
+      },
+    },
   },
-  nome:{
-    type: DataTypes.STRING,
-    allowNull:false,
-
-  },
-  Endereco_idEndereco: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'Endereco',
-      key: 'id'
-    }
-  }
-  
-  
-},
-{tableName:'Consultorio', timestamps:false}
-
-)
-Consultorio.belongsTo(Endereco, { foreignKey: 'Endereco_idEndereco' });
-
+  { tableName: "Consultorio", timestamps: false }
+);
+Consultorio.belongsTo(Endereco, { foreignKey: "Endereco_idEndereco" });
